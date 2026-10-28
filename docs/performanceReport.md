@@ -1,7 +1,7 @@
 1. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, {_id: 0})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -34,7 +34,7 @@
 4. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, {restaurant_id: 1, name: 1, borough:1 , "address.zipcode": 1, _id: 0})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
@@ -114,9 +114,9 @@ db.restaurants.createIndex({ grades.score: 1 });
 
 10. ## 📊 Query Performance Report
 
-- 🧪 **Query**: `db.restaurants.find({"location.coordinates.1" : {$gt: -95.754168}})`
+- 🧪 **Query**: `db.restaurants.find({"location.coordinates.1" : {$lt: -95.754168}})`
 - ⏱️ **Execution time**: 0 ms
-- 📚 **Documents returned**: 664
+- 📚 **Documents returned**: 0
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: COLLSCAN
 
