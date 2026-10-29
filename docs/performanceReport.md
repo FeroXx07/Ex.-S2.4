@@ -78,7 +78,7 @@
 8. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find( { "grades.score": { $gt: 90 } }, { _id: 0 } )`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 2
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -151,7 +151,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 12. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({cuisine: {$ne: "American"}, "grades.score": {$gt: 70}, "location.coordinates.0": {$lt: -65.754168}}, { _id: 0 })`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 1
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -187,7 +187,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 14. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({ name: { $regex: "\^Wil" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 2
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -251,7 +251,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 19. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({borough: {$nin:["Staten Island", "Queens", "Bronx", "Brooklyn"]}},{ restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 305
 - 🔍 **Documents examined**: 305
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -262,7 +262,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 20. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"grades.score": {$lte:10}}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 612
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -307,11 +307,33 @@ db.restaurants.createIndex({ grades.score: 1 });
 23. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"grades.1.grade":"A","grades.1.score":9, "grades.1.date":ISODate("2014-08-11T00:00:00Z")},{restaurant_id: 1, name: 1, grades: 1, _id: 0})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 0
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
 ## ✅ No significant issues detected
+
+
+24. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({location:{$geoWithin:{$centerSphere:[[-74,40.7], 5 / 6378.1]}}},{restaurant_id: 1, name: 1, "address.street": 1, "address.zipcode": 1, location: 1, _id: 0})`
+- ⏱️ **Execution time**: 1 ms
+- 📚 **Documents returned**: 147
+- 🔍 **Documents examined**: 664
+- 🛠️ **Execution stage**: PROJECTION_DEFAULT
+
+## 🚨 Performance Issues
+
+### ℹ️ Recommendations
+- ‼️ Filtering on unindexed field 'location' - performance may suffer.
+- ‼️ Filtering on unindexed field 'address.street' - performance may suffer.
+
+### 💡 Suggested Indexes
+Consider creating these indexes:
+```javascript
+db.restaurants.createIndex({ location: 1 });
+db.restaurants.createIndex({ address.street: 1 });
+```
 
 
