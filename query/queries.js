@@ -68,7 +68,7 @@ db.restaurants.find({grades: {$elemMatch:{grade:"A",score:11, date:ISODate("2014
 db.restaurants.find({"grades.1.grade":"A","grades.1.score":9, "grades.1.date":ISODate("2014-08-11T00:00:00Z")},{restaurant_id: 1, name: 1, grades: 1, _id: 0});
 
 // 24. Trobar el restaurant_id, name, street, zipcode i coordenades dels restaurants a menys de 5 km de [-74, 40.7].
-
+db.restaurants.find({location:{$geoWithin:{$centerSphere:[[-74,40.7], 5 / 6378.1]}}},{restaurant_id: 1, name: 1, "address.street": 1, "address.zipcode": 1, location: 1, _id: 0});
 
 // 25. Ordenar els noms dels restaurants en ordre ascendent, mostrant totes les columnes.
 
