@@ -41,7 +41,7 @@ db.restaurants.find({cuisine:{$ne:'American'}, "grades.grade": "A", borough:{$ne
 db.restaurants.find({ name: { $regex: "\^Wil" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
 
 // 15. Trobar restaurant_id, name, borough i cuisine on el nom acaba en 'ces'.
-db.restaurants.find({ name: { $regex: ".*ces$\" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
+db.restaurants.find({ name: { $regex: ".*ces$" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 });
 
 // 16. Trobar restaurant_id, name, borough i cuisine on el nom conté 'Reg'.
 
