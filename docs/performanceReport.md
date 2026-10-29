@@ -133,7 +133,7 @@
 13. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({cuisine:{$ne:'American'}, "grades.grade": "A", borough:{$ne:'Brooklyn'}}, { _id: 0 }).sort({cuisine: -1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 318
 - 🔍 **Documents examined**: 403
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -199,7 +199,7 @@
 19. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({borough: {$nin:["Staten Island", "Queens", "Bronx", "Brooklyn"]}},{ restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 305
 - 🔍 **Documents examined**: 305
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -323,50 +323,27 @@ db.restaurants.createIndex({ cuisine: 1 });
 - 🧪 **Query**: `db.restaurants.find({'address.street':{$in:[null,'']}},{address:1, _id:0})`
 - ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 3
-- 🔍 **Documents examined**: 664
+- 🔍 **Documents examined**: 3
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ⚠️ Examined 664 docs to return 3 (ratio 221.3:1)
-
-### ℹ️ Recommendations
-- ‼️ Filtering on unindexed field 'address.street' - performance may suffer.
-
-### 💡 Suggested Indexes
-Consider creating these indexes:
-```javascript
-db.restaurants.createIndex({ address.street: 1 });
-```
+## ✅ No significant issues detected
 
 
 29. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({'location.coordinates':{$type:'double'}},{name:1, restaurant_id:1, "location.coordinates":1, _id:0})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 3 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
 
-## 🚨 Performance Issues
-
-### ℹ️ Recommendations
-- ‼️ Filtering on unindexed field 'name' - performance may suffer.
-- ‼️ Filtering on unindexed field 'location.coordinates' - performance may suffer.
-
-### 💡 Suggested Indexes
-Consider creating these indexes:
-```javascript
-db.restaurants.createIndex({ name: 1 });
-db.restaurants.createIndex({ location.coordinates: 1 });
-```
+## ✅ No significant issues detected
 
 
 30. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({'grades.score':{$mod:[7,0]}},{restaurant_id:1, name:1, "grades.grade":1, _id:0})`
-- ⏱️ **Execution time**: 3 ms
+- ⏱️ **Execution time**: 5 ms
 - 📚 **Documents returned**: 262
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
