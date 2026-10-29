@@ -89,3 +89,17 @@
 ---
 - ✔️ OK - Query **[ 29 ]**
 
+---
+- ✔️ OK - Query **[ 30 ]**
+
+---
+- ❌ MISMATCH - Query **[ 31 ]** Result does not match expected output.
+
+
+🔢 Different result lengths: 
+- **Expected:** 10
+- **Got:** 7
+
+---
+- ✔️ OK - Query **[ 32 ]**
+
