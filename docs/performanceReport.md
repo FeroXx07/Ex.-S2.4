@@ -78,7 +78,7 @@
 8. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find( { "grades.score": { $gt: 90 } }, { _id: 0 } )`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 2
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -121,5 +121,30 @@ db.restaurants.createIndex({ grades.score: 1 });
 - 🛠️ **Execution stage**: COLLSCAN
 
 ## ✅ No significant issues detected
+
+
+11. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({cuisine: {$ne: "American"}, "grades.score": {$gt: 70}, "location.coordinates.1": {$lt: -65.754168}})`
+- ⏱️ **Execution time**: 0 ms
+- 📚 **Documents returned**: 0
+- 🔍 **Documents examined**: 664
+- 🛠️ **Execution stage**: COLLSCAN
+
+## 🚨 Performance Issues
+
+### 🔥 Critical Issues
+- 🚨 Full collection scan detected where index could be used
+
+### ℹ️ Recommendations
+- ‼️ Filtering on unindexed field 'cuisine' - performance may suffer.
+- ‼️ Filtering on unindexed field 'grades.score' - performance may suffer.
+
+### 💡 Suggested Indexes
+Consider creating these indexes:
+```javascript
+db.restaurants.createIndex({ cuisine: 1 });
+db.restaurants.createIndex({ grades.score: 1 });
+```
 
 
