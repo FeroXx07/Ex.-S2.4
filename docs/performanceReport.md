@@ -101,7 +101,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 9. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({grades: {$elemMatch: {score: {$gt: 80, $lt:100}}}}, { _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 1
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -175,7 +175,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 
 13. ## 📊 Query Performance Report
 
-- 🧪 **Query**: `db.restaurants.find({cuisine:{$ne:'American'}, "grades.grade": "A", borough:{$ne:'Brooklyn'}}).sort({cuisine: -1})`
+- 🧪 **Query**: `db.restaurants.find({cuisine:{$ne:'American'}, "grades.grade": "A", borough:{$ne:'Brooklyn'}}, { _id: 0 }).sort({cuisine: -1})`
 - ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 318
 - 🔍 **Documents examined**: 535
