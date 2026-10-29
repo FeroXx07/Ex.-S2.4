@@ -45,3 +45,11 @@
 ---
 - ✔️ OK - Query **[ 16 ]**
 
+---
+- ❌ MISMATCH - Query **[ 17 ]** Result does not match expected output.
+
+
+🔢 Different result lengths: 
+- **Expected:** 22
+- **Got:** 275
+

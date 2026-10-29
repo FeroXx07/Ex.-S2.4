@@ -226,3 +226,23 @@ db.restaurants.createIndex({ grades.score: 1 });
 - ⚠️ Examined 664 docs to return 4 (ratio 166.0:1)
 
 
+17. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({cuisine: {$in:["American", "Chinese"]}}, {_id: 0})`
+- ⏱️ **Execution time**: 0 ms
+- 📚 **Documents returned**: 275
+- 🔍 **Documents examined**: 664
+- 🛠️ **Execution stage**: PROJECTION_SIMPLE
+
+## 🚨 Performance Issues
+
+### ℹ️ Recommendations
+- ‼️ Filtering on unindexed field 'cuisine' - performance may suffer.
+
+### 💡 Suggested Indexes
+Consider creating these indexes:
+```javascript
+db.restaurants.createIndex({ cuisine: 1 });
+```
+
+
