@@ -12,7 +12,7 @@
 2. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, {restaurant_id: 1, name: 1, _id: 0})`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -34,7 +34,7 @@
 4. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, {restaurant_id: 1, name: 1, borough:1 , "address.zipcode": 1, _id: 0})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
@@ -101,7 +101,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 9. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({grades: {$elemMatch: {score: {$gt: 80, $lt:100}}}}, { _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 1
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -126,7 +126,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 11. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({cuisine: {$ne: "American"}, "grades.score": {$gt: 70}, "location.coordinates.0": {$lt: -65.754168}}, { _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 2 ms
 - 📚 **Documents returned**: 1
 - 🔍 **Documents examined**: 403
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -167,27 +167,21 @@ db.restaurants.createIndex({ grades.score: 1 });
 - 🧪 **Query**: `db.restaurants.find({ name: { $regex: "\^Wil" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
 - ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 2
-- 🔍 **Documents examined**: 664
+- 🔍 **Documents examined**: 2
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ⚠️ Examined 664 docs to return 2 (ratio 332.0:1)
+## ✅ No significant issues detected
 
 
 15. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({ name: { $regex: ".*ces$" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 2
-- 🔍 **Documents examined**: 664
+- 🔍 **Documents examined**: 2
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ⚠️ Examined 664 docs to return 2 (ratio 332.0:1)
+## ✅ No significant issues detected
 
 
 16. ## 📊 Query Performance Report
@@ -195,13 +189,10 @@ db.restaurants.createIndex({ grades.score: 1 });
 - 🧪 **Query**: `db.restaurants.find({ name: { $regex: ".*Reg.*" } }, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
 - ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 4
-- 🔍 **Documents examined**: 664
+- 🔍 **Documents examined**: 4
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ⚠️ Examined 664 docs to return 4 (ratio 166.0:1)
+## ✅ No significant issues detected
 
 
 17. ## 📊 Query Performance Report
@@ -240,7 +231,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 20. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"grades.score": {$lte:10}}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 612
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -262,7 +253,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 - 🧪 **Query**: `db.restaurants.find({ $or: [{ cuisine: "Seafood" }, { cuisine: { $nin: ["American", "Chinese"] } }, { name: { $regex: "^Will" } }] }, { _id: 0 } )`
 - ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 389
-- 🔍 **Documents examined**: 664
+- 🔍 **Documents examined**: 389
 - 🛠️ **Execution stage**: SUBPLAN
 
 ## ✅ No significant issues detected
@@ -271,7 +262,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 22. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({grades: {$elemMatch:{grade:"A",score:11, date:ISODate("2014-08-11T00:00:00Z")}}},{restaurant_id: 1, name: 1, grades: 1, _id: 0})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 1
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -285,7 +276,7 @@ db.restaurants.createIndex({ grades.score: 1 });
 23. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"grades.1.grade":"A","grades.1.score":9, "grades.1.date":ISODate("2014-08-11T00:00:00Z")},{restaurant_id: 1, name: 1, grades: 1, _id: 0})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 0
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -318,21 +309,12 @@ db.restaurants.createIndex({ address.street: 1 });
 25. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({},{_id:0}).sort({name:1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
-- 🛠️ **Execution stage**: SORT
+- 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ‼️ Sorting on unindexed field 'name' - performance may suffer.
-
-### 💡 Suggested Indexes
-Consider creating these indexes:
-```javascript
-db.restaurants.createIndex({ name: 1 });
-```
+## ✅ No significant issues detected
 
 
 26. ## 📊 Query Performance Report
@@ -341,18 +323,9 @@ db.restaurants.createIndex({ name: 1 });
 - ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
-- 🛠️ **Execution stage**: SORT
+- 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ‼️ Sorting on unindexed field 'name' - performance may suffer.
-
-### 💡 Suggested Indexes
-Consider creating these indexes:
-```javascript
-db.restaurants.createIndex({ name: 1 });
-```
+## ✅ No significant issues detected
 
 
 27. ## 📊 Query Performance Report
@@ -423,7 +396,7 @@ db.restaurants.createIndex({ location.coordinates: 1 });
 30. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({'grades.score':{$mod:[7,0]}},{restaurant_id:1, name:1, "grades.grade":1, _id:0})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 2 ms
 - 📚 **Documents returned**: 262
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
@@ -445,30 +418,16 @@ db.restaurants.createIndex({ grades.score: 1 });
 - 🧪 **Query**: `db.restaurants.find({name:{$regex:'mon',$options:'i'}},{name:1, borough:1, "location.coordinates":1, cuisine:1, _id:0})`
 - ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 10
-- 🔍 **Documents examined**: 664
+- 🔍 **Documents examined**: 10
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
 
-## 🚨 Performance Issues
-
-### ⚠️ High Priority Issues
-- ⚠️ Examined 664 docs to return 10 (ratio 66.4:1)
-
-### ℹ️ Recommendations
-- ‼️ Filtering on unindexed field 'name' - performance may suffer.
-- ‼️ Filtering on unindexed field 'location.coordinates' - performance may suffer.
-
-### 💡 Suggested Indexes
-Consider creating these indexes:
-```javascript
-db.restaurants.createIndex({ name: 1 });
-db.restaurants.createIndex({ location.coordinates: 1 });
-```
+## ✅ No significant issues detected
 
 
 32. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({grades: {$elemMatch: {score: {$gt: 80, $lt:100}}}}, { restaurant_id:1, name:1, "grades.grade":1, "grades.score": 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 1
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
